@@ -80,9 +80,26 @@ exports.droneCtrl = {
 
     },
     getDroneById: async (req, res) => {
-        try { 
-            let {id}=req.params;
-            let drone=await DroneModel.findOne({_id:id});
+        try {
+            let { id } = req.params;
+            let drone = await DroneModel.findOne({ _id: id });
+            res.status(200).json(drone);
+        }
+        catch (err) {
+            console.log(err);
+            res.status(500).json({ msg: "err", err })
+        }
+    },
+    getAlldronesByWeight: async (req, res) => {
+        try {
+            let weight = req.params;
+            let drone;
+            if (weight < 10) {
+                drone = await DroneModel.filter((item) => item.speed < 100&&item.available);
+            }
+            else {
+                drone = await DroneModel.filter((item) => item.speed >= 100&&item.available);
+            }
             res.status(200).json(drone);
         }
         catch (err) {
