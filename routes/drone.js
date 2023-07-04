@@ -9,4 +9,5 @@ router.post("/add/:idBase",auth,auth,droneCtrl.addDrones);
 router.delete("/remove/:baseId/:id",auth,droneCtrl.deleteDrone);
 router.put("/edit/:id",auth,droneCtrl.editDrone);
 router.get("/:id",droneCtrl.getDroneById)
+router.get("/:weight",droneCtrl.getAlldronesByWeight);
 module.exports = router;
