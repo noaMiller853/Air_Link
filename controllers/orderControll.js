@@ -2,17 +2,15 @@ const { OrderModel } = require("../models/orderModel");
 const { validateOrder } = require("../validation/validOrder")
 
 exports.orderCtrl = {
-    addOrder: async (req, res) => {
+   addOrder: async (req, res) => {
         let validBody = validateOrder(req.body);
         if (!validBody) {
             res.status(400).json(validBody.error.details);
         }
         try {
             let order = new OrderModel(req.body);
-           let {droneId}=req.params;
-            order.user_id = req.tokenData._id;
-            order.drone_id = droneId;
-            await order.save();
+          order.user_id = req.tokenData._id;
+        await order.save();
             res.status(201).json(order);
         }
         catch (err) {
