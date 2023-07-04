@@ -3,7 +3,7 @@ const { ProductModel } = require("../models/productModel");
 const router = express.Router();
 
 // GET all products
-router.get('/products', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const products = await ProductModel.find({});
     res.json(products);
@@ -14,7 +14,7 @@ router.get('/products', async (req, res) => {
 });
 
 // GET a single product by ID
-router.get('/products/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const product = await ProductModel.findById(req.params.id);
     if (!product) {
@@ -32,7 +32,7 @@ router.post('/productsOfOrder', async (req, res) => {
   const { name, email, productId,weight } = req.body;
 
   // Validate the request body
-  if (!name || !email || !productId||weight) {
+  if (!name || !email || !productId||!weight) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -53,4 +53,5 @@ router.post('/productsOfOrder', async (req, res) => {
   }
 });
 module.exports=router;
+
 
