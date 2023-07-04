@@ -4,7 +4,7 @@ const { auth } = require("../middlewares/auth");
 const router = express.Router();
 
 router.get("/",orderCtrl.getAllOrders);
-router.post("/add/:droneId",auth,orderCtrl.addOrder);
+router.post("/add",auth,orderCtrl.addOrder);
 router.delete("/remove/:idDel",auth,orderCtrl.removeOrder)
 router.get("/:id",orderCtrl.getOrderById)
 module.exports = router;
