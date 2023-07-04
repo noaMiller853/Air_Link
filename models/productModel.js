@@ -5,4 +5,4 @@ const productSchema = new mongoose.Schema({
     description: String,
     weight:Number,
   });
-  exports.ProductModel = mongoose.model("produts", productSchema);
+  exports.ProductModel = mongoose.model("products", productSchema);
