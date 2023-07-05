@@ -3,7 +3,7 @@ const userSchema =new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-    active:Boolean,
+    active:{type:Boolean,default:true},
     tel:String,
     date_created: {
         type: Date, default: Date.now()
